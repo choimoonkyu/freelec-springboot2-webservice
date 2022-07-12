@@ -35,3 +35,4 @@ deploy:
     email:
       recipients:
         - "ansrb42@naver.com"
+        -
