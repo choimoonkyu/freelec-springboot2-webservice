@@ -19,6 +19,12 @@ before_deploy:
   - mkdir -p deploy
   - mv freelec-springboot2-webservice.zip deploy/freelec-springboot2-webservice.zip
 
+# CI 실행 완료 시 메일로 알람 테스트
+notifications:
+  email:
+    recipients:
+      - "ansrb42@naver.com"
+
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
@@ -40,9 +46,3 @@ deploy:
     deployment_group: freelec-springboot2-webservice-group # 웹 콘솔에서 등록한 CodeDeploy 배포그룹
     region: ap-northeast-2
     wait-until-deployed: true
-
-  # CI 실행 완료 시 메일로 알람 테스트
-  notifications:
-    email:
-      recipients:
-        - "ansrb42@naver.com"
